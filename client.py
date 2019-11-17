@@ -125,7 +125,7 @@ def updateUser(url, name):
 
         # Show results
         print('Request: {}'.format(request))
-        printUser(url, name)
+        printUser(url, user.name)
 
     # Handle failures
     except ConnectionError:
