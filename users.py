@@ -42,7 +42,7 @@ class User(Resource):
         args = parser.parse_args()
         
         # Check if user already exists
-        if userExists(users, name):
+        if users.get(name) is not None:
             return 'User with name {} already exists'\
                 .format(name), HTTP_BAD_REQUEST
 
@@ -65,12 +65,12 @@ class User(Resource):
         args = parser.parse_args()
 
         # If user doesn't exist, create the user
-        if not userExists(users, name):
-            user = {
+        user = {
                 'name': name,
                 'age': args['age'],
                 'occupation': args['occupation']
             }
+        if users.get(name) is None:
             key = user['name']
             users[key] = user
             return user, HTTP_CREATED
@@ -88,11 +88,3 @@ class User(Resource):
 
         else:
             return USER_NOT_FOUND_MSG, HTTP_NOT_FOUND
-
-# Helper methods
-
-def userExists(users, name):
-    for user in users:
-        if (name == user['name']):
-            return True
-    return False
