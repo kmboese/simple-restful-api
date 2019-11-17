@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse
  # import the user class and the list of users
-from users import User, users       
+from user import User, users       
 from user_functions import UserFunctions
 
 # Dev flags
