@@ -1,4 +1,4 @@
-from user import users
+from user_api import users
 from flask_restful import Api, Resource, reqparse
 
 from http_codes import *
